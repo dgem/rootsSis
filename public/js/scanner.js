@@ -1,12 +1,18 @@
 document.getElementById("scan").addEventListener("click", function(evt) {
-	navigator.bluetooth.requestDevice({filters:[{namePrefix: "Puck.js"}]})
+	var namePrefix = "Puckjs";
+	var optionalServices = [
+		BluetoothUUID.canonicalUUID(0x180F),
+		BluetoothUUID.canonicalUUID(0x180A),
+		BluetoothUUID.canonicalUUID(0x1800)
+	];
+	navigator.bluetooth.requestDevice({filters:[{namePrefix}, {optionalServices}]})
 	  .then(function(device) {
 	    console.log(device);
 	    return device.gatt.connect();
 	  })
 	  .then(function(server) {
 	    console.log(server);
-	    return server.getPrimaryService(BluetoothUUID.canonicalUUID(0x180F));
+	    return server.getPrimaryService();
 	  })
 	  .then(function(service) {
 	    // Step 4: get the Characteristic
