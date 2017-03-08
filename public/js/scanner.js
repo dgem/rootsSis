@@ -6,7 +6,7 @@ document.getElementById("scan").addEventListener("click", function(evt) {
 	  })
 	  .then(function(server) {
 	    console.log(server);
-	    return server.getPrimaryService(0x180A);
+	    return server.getPrimaryService(BluetoothUUID.canonicalUUID(0x180F));
 	  })
 	  .then(function(service) {
 	    // Step 4: get the Characteristic
