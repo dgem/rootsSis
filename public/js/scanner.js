@@ -3,6 +3,7 @@ document.getElementById("scan").addEventListener("click", function(evt) {
 	var optionalServices = [
 		BluetoothUUID.canonicalUUID(0x180F),
 		BluetoothUUID.canonicalUUID(0x180A),
+		BluetoothUUID.canonicalUUID(0x1809),
 		BluetoothUUID.canonicalUUID(0x1800)
 	];
 	var options = {filters:[{namePrefix:namePrefix}], optionalServices:optionalServices};
