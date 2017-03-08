@@ -5,7 +5,7 @@ document.getElementById("scan").addEventListener("click", function(evt) {
 		BluetoothUUID.canonicalUUID(0x180A),
 		BluetoothUUID.canonicalUUID(0x1800)
 	];
-	var options = {filters:[{namePrefix:namePrefix}, {optionalServices:optionalServices}]};
+	var options = {filters:[{namePrefix:namePrefix}], optionalServices:optionalServices};
 	console.log(`options ${options}`);
 	navigator.bluetooth.requestDevice(options)
 	  .then(function(device) {
